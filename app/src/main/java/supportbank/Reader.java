@@ -1,17 +1,14 @@
-package app.src.main.java.supportbank;
+package supportbank;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class Reader {
     public String file;
     public String line;
-    public ArrayList<Person> accounts = new ArrayList<>();
-    // public HashMap<String, Float> accounts = new HashMap<String, Float>();
+    public HashMap<String, Float> accounts = new HashMap<String, Float>();
 
     public Reader(String File) {
         file = File;
@@ -30,26 +27,23 @@ public class Reader {
     }
 
     public void printAccounts() {
-        for (int i = 0; i < accounts.size(); i++) {
-            System.out.println("Account: " + accounts.get(i).name + " Owes " + accounts.get(i).amountOwed);
-        }
+        System.out.println(accounts);
     }
 
     public void accountModifier(Transaction transaction)
     {
-        
-        for(int i = 0; i < accounts.size(); i ++)
-        {   
-            if(accounts.get(i).name.equals(transaction.fromName))
-            {
-                accounts.get(i).setAmountOwed(Float.parseFloat(transaction.amount));
-                break;
-            }
+        float newAmount;
+        if(!accounts.containsKey(transaction.fromName))
+        {
+            accounts.put(transaction.fromName, Float.parseFloat(transaction.amount));
+            //This works with the FROM payments but doesnt calculate the TO payments
+        }
+        else
+        {
+            newAmount = accounts.get(transaction.fromName) + Float.parseFloat(transaction.amount);
+            accounts.put(transaction.fromName, newAmount);
         }
         
-        
-        Person currentPerson = new Person(transaction.fromName, transaction.amount);
-        accounts.add(currentPerson);
         
     }
 }

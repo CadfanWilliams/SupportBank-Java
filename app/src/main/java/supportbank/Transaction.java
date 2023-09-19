@@ -1,6 +1,4 @@
-package app.src.main.java.supportbank;
-
-import javax.swing.TransferHandler.TransferSupport;
+package supportbank;
 
 public class Transaction {
      //Date,From,To,Narrative,Amount
