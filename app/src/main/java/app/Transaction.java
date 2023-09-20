@@ -1,4 +1,4 @@
-package supportbank;
+package app;
 
 public class Transaction {
    // Date,From,To,Narrative,Amount
@@ -17,8 +17,7 @@ public class Transaction {
       amount = rawTransaction[4];
    }
 
-   public String getValues()
-   {
-      return fromName + " sent " + toName + " £" + amount + " for: " + narrative + " on the " + date;
+   public String getValues() {
+      return fromName + " sent " + toName + "\u00A3" + amount + " for " + narrative + " on the " + date;
    }
 }
