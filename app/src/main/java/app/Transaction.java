@@ -18,6 +18,6 @@ public class Transaction {
    }
 
    public String getValues() {
-      return fromName + " sent " + toName + "\u00A3" + amount + " for " + narrative + " on the " + date;
+      return fromName + " sent " + toName + " \u00A3" + amount + " for " + narrative + " on the " + date;
    }
 }
